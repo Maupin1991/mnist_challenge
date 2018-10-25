@@ -13,7 +13,7 @@ def create():
     )
     weights_path = os.path.join(weights_path, 'models/secret')
 
-    model = Model('eval')
+    model = Model()
 
     sess = tf.Session().__enter__()
     saver = tf.train.Saver()
