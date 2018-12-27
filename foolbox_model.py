@@ -23,6 +23,6 @@ def create():
     images = model.x_input
     logits = model.pre_softmax
 
-    fmodel = foolbox.models.TensorFlowModel(images, logits, bounds=(0, 255))
+    fmodel = foolbox.models.TensorFlowModel(images, logits, bounds=(0, 1))
 
     return fmodel
