@@ -7,22 +7,22 @@ from foolbox import zoo
 
 
 def create():
-    weights_path = zoo.fetch_weights(
-        'https://github.com/MadryLab/mnist_challenge_models/raw/master/secret.zip',
-        unzip=True
-    )
-    weights_path = os.path.join(weights_path, 'models/secret')
+    tf.enable_eager_execution()
 
-    model = Model()
+    with tf.get_default_graph().as_default():
+        weights_path = zoo.fetch_weights(
+            'https://github.com/MadryLab/mnist_challenge_models/raw/master/secret.zip',
+            unzip=True
+        )
+        weights_path = os.path.join(weights_path, 'models/secret')
 
-    sess = tf.Session().__enter__()
-    saver = tf.train.Saver()
-    checkpoint = tf.train.latest_checkpoint(weights_path)
-    saver.restore(sess, checkpoint)
+        model = Model()
 
-    images = model.x_input
-    logits = model.pre_softmax
+        sess = tf.Session().__enter__()
+        saver = tf.train.Saver()
+        checkpoint = tf.train.latest_checkpoint(weights_path)
+        saver.restore(sess, checkpoint)
 
-    fmodel = foolbox.models.TensorFlowModel(images, logits, bounds=(0, 1))
+    fmodel = foolbox.models.TensorFlowModel(model, bounds=(0, 1))
 
     return fmodel

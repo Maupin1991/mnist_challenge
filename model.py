@@ -10,8 +10,8 @@ import tensorflow as tf
 
 class Model(object):
   def __init__(self):
-    self.x_input = tf.placeholder(tf.float32, shape = [None, 784])
-    self.y_input = tf.placeholder(tf.int64, shape = [None])
+    self.x_input = tf.keras.layers.Input(shape = [784], dtype=tf.float32)
+    self.y_input = tf.keras.layers.Input(shape = [], dtype=tf.int64)
 
     self.x_image = tf.reshape(self.x_input, [-1, 28, 28, 1])
 
@@ -74,3 +74,7 @@ class Model(object):
                             ksize = [1,2,2,1],
                             strides=[1,2,2,1],
                             padding='SAME')
+
+  def __call__(self, inputs):
+      sess = tf.get_default_session()
+      return sess.run(self.pre_softmax, feed_dict={self.x_input: inputs})

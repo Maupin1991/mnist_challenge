@@ -1,5 +1,12 @@
 # MNIST Adversarial Examples Challenge
 
+
+UPDATE: added model for foolbox 3. Current requirements:
+
+`tensorflow==1.15.0
+foolbox>=3.0`
+
+
 Recently, there has been much progress on adversarial *attacks* against neural networks, such as the [cleverhans](https://github.com/tensorflow/cleverhans) library and the code by [Carlini and Wagner](https://github.com/carlini/nn_robust_attacks).
 We now complement these advances by proposing an *attack challenge* for the
 [MNIST](http://yann.lecun.com/exdb/mnist/) dataset (we recently released [a
