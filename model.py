@@ -76,5 +76,5 @@ class Model(object):
                             padding='SAME')
 
   def __call__(self, inputs):
-      sess = tf.get_default_session()
+      sess = tf.compat.v1.get_default_session()
       return sess.run(self.pre_softmax, feed_dict={self.x_input: inputs})

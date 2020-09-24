@@ -19,8 +19,8 @@ def create():
         model = Model()
 
         sess = tf.compat.v1.Session().__enter__()
-        saver = tf.train.Saver()
-        checkpoint = tf.train.latest_checkpoint(weights_path)
+        saver = tf.compat.v1.train.Saver()
+        checkpoint = tf.compat.v1.train.latest_checkpoint(weights_path)
         saver.restore(sess, checkpoint)
 
     fmodel = foolbox.models.TensorFlowModel(model, bounds=(0, 1))
