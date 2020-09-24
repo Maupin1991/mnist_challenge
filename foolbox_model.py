@@ -7,7 +7,7 @@ from foolbox import zoo
 
 
 def create():
-    tf.enable_eager_execution()
+    tf.compat.v1.enable_eager_execution()
 
     with tf.get_default_graph().as_default():
         weights_path = zoo.fetch_weights(
