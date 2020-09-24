@@ -18,7 +18,7 @@ def create():
 
         model = Model()
 
-        sess = tf.Session().__enter__()
+        sess = tf.compat.v1.Session().__enter__()
         saver = tf.train.Saver()
         checkpoint = tf.train.latest_checkpoint(weights_path)
         saver.restore(sess, checkpoint)
