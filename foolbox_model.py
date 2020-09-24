@@ -9,7 +9,7 @@ from foolbox import zoo
 def create():
     tf.compat.v1.enable_eager_execution()
 
-    with tf.get_default_graph().as_default():
+    with tf.compat.v1.get_default_graph().as_default():
         weights_path = zoo.fetch_weights(
             'https://github.com/MadryLab/mnist_challenge_models/raw/master/secret.zip',
             unzip=True
