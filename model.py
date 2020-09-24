@@ -56,7 +56,7 @@ class Model(object):
 
   @staticmethod
   def _weight_variable(shape):
-      initial = tf.truncated_normal(shape, stddev=0.1)
+      initial = tf.compat.v1.truncated_normal(shape, stddev=0.1)
       return tf.Variable(initial)
 
   @staticmethod
